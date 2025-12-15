@@ -2,29 +2,8 @@
 
 import { useState } from "react";
 import supabase from "@/app/db";
-
-interface Persona {
-  id: string;
-  value: string;
-}
-
-interface Subreddit {
-  id: string;
-  value: string;
-}
-
-interface Query {
-  id: string;
-  value: string;
-}
-
-interface FormData {
-  companyInfo: string;
-  personas: Persona[];
-  subreddits: Subreddit[];
-  queries: Query[];
-  postsPerWeek: number;
-}
+import { FormData } from "./types";
+import FieldLabel from "./components/FieldLabel";
 
 const initialFormData: FormData = {
   companyInfo: "",
@@ -157,12 +136,7 @@ const ContentEntry = () => {
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Company Info */}
             <div>
-              <label
-                htmlFor="companyInfo"
-                className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2"
-              >
-                Company Info
-              </label>
+             <FieldLabel label="Company Info" />
               <textarea
                 id="companyInfo"
                 value={formData.companyInfo}
